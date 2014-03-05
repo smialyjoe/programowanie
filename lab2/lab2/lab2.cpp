@@ -11,6 +11,7 @@ using namespace std;
 
 int getTabSize();
 float* generateTab(int size);
+bool table_contains(float number, float* tab, int size);
 
 float* generateTab(int size)
 {
@@ -70,7 +71,7 @@ void print_zad21(float* tab, int size, int precision)
 }
 
 
-int zad22()
+int get_precision_zad22()
 {
 	//dorzuciæ dok³adnoœæ wyœwietlania po przecinku i pytaæ usera o to
 	bool isValid = false;
@@ -155,6 +156,29 @@ float* get_double_tab_zad25(float* tab, int size)
 
 }
 
+void copy_tables_zad25(float* tab, int tab_size, float* tab_copy, int tab_copy_size)
+{
+	int pointer = 0;
+	for (int i = 0; i < tab_size; i++)
+	{
+		if (!table_contains(tab[i], tab_copy, tab_copy_size))
+		{
+			tab_copy[pointer] = tab[i];
+			pointer++;
+		}
+	}
+}
+
+bool table_contains(float number, float* tab, int size)
+{
+	for (int j = 0; j < size; j++)
+	{
+		if (tab[j] == number)
+			return true;		
+	}
+	return false;
+}
+
 void cleanUp(float *tab)
 {
 	delete[] tab;
@@ -168,17 +192,28 @@ int _tmain(int argc, _TCHAR* argv[])
 	
 	/*for (int i = 0; i < 25;i++)
 		cout << getRandomNumber(1000)<<endl;*/
-	int precision = 2;//zad22();
+	int precision = get_precision_zad22()l
 	int size = 3;//getTabSize();
 	float * tab = generateTab(size);
 	//zad21(precision);
 	//zad23(precision);
+	cout << "Wprowadzone liczby" << endl;
 	print_zad21(tab, size, precision);
+	cout << "Wyswietlenie wprawdzonych liczb w roznych formatach" << endl;
 	print_in_many_formats_zad23(tab, size, precision);
-	//tab = sort_zad24(tab, size);
-	//print_zad21(tab, size, precision);
+	tab = sort_zad24(tab, size);
+	cout << "Posortowane liczby" <<endl;
+	print_zad21(tab, size, precision);
+	cout << "Podwojny rozmiar tablicy" << endl;
+	int double_size = size * 2;
+	float* tab_copy = get_double_tab_zad25(tab, size);
+	print_zad21(tab_copy, double_size, precision);
+	cout << "Kopiowanie tablic" << endl;
+	copy_tables_zad25(tab, size, tab_copy, double_size);
+	print_zad21(tab, size, precision);
+	print_zad21(tab_copy, double_size, precision);
 	cleanUp(tab);
-
+	cleanUp(tab_copy);
 	system("pause");
 
 	return 0;
