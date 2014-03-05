@@ -112,18 +112,11 @@ void print_in_many_formats_zad23(float *tab, int size, int precision)
 	{
 		int temp = (int)tab[i];
 		cout.precision(precision);
-		//cout.setf(ios::fixed);
 		cout << setw(10)<< right << fixed << tab[i];
-		//cout.unsetf(ios::fixed);
-		//cout.setf(ios::oct, ios::basefield);
 		cout << setw(10) << right<< oct << temp;
-		//cout.unsetf(ios::oct);
-		//cout.setf(ios::hex, ios::basefield);
 		cout <<setw(10) << right << hex << temp;
-		//cout.unsetf(ios::hex);
 		cout << endl;
 	}
-
 }
 
 float* sort_zad24(float* tab, int size)
@@ -198,34 +191,38 @@ void cleanUp(float *tab)
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	///tablica dynamiczna z max wsczytanym od usera na pocz¹tku
-	//wycztywanie liczb rzeczywistych, zeby nie przekroczy³o tablicy
-	/*
-	for (int i = 0; i < 25;i++)
-		cout << get_random_number(1000) << endl;
-	system("pause");*/
 	int precision = get_precision_zad22();
 	int size = getTabSize();
 	float * tab = generateTab(size, true);
-	//zad21(precision);
-	//zad23(precision);
+
 	cout << "Wprowadzone liczby" << endl;
 	print_zad21(tab, size, precision);
+
 	cout << "Wyswietlenie wprawdzonych liczb w roznych formatach" << endl;
 	print_in_many_formats_zad23(tab, size, precision);
+
 	tab = sort_zad24(tab, size);
 	cout << "Posortowane liczby" <<endl;
 	print_zad21(tab, size, precision);
+
 	cout << "Podwojny rozmiar tablicy" << endl;
 	int double_size = size * 2;
 	float* tab_copy = get_double_tab_zad25(tab, size, true);
 	print_zad21(tab_copy, double_size, precision);
+
 	cout << "Kopiowanie tablic" << endl;
 	copy_tables_zad25(tab, size, tab_copy, double_size);
 	print_zad21(tab, size, precision);
 	print_zad21(tab_copy, double_size, precision);
+
+	
+	tab_copy = sort_zad24(tab_copy, double_size);
+	cout << "Posortowana podwojona tablica" << endl;
+	print_zad21(tab_copy, double_size, precision);
+
 	cleanUp(tab);
 	cleanUp(tab_copy);
+
 	system("pause");
 
 	return 0;
