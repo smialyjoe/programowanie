@@ -4,8 +4,6 @@
 #include "stdafx.h"
 #include <iostream>
 #include <iomanip>
-#include <random>
-#include <Windows.h>
 
 using namespace std;
 
