@@ -12,31 +12,41 @@ using namespace std;
 int getTabSize();
 float* generateTab(int size);
 bool table_contains(float number, float* tab, int size);
+float get_random_number(int limiter);
 
-float* generateTab(int size)
+float* generateTab(int size, bool random)
 {
 	float *tab;
 	bool isValid = false;
 
 
 	tab = new float[size];
-
-	for (int i = 0; i< size; i++)
-	{
-		cout << "Podaj liczbe rzeczywista ";
-		cin >> tab[i];
-	}
+	if (random)
+		for (int i = 0; i < size; i++)
+			tab[i] = get_random_number(1000);
+	else
+		for (int i = 0; i< size; i++)
+		{
+			
+			cout << "Podaj liczbe rzeczywista ";
+			cin >> tab[i];
+		}
 	return tab;
 
 }
 
 float get_random_number(int limiter)
 {
-	srand(time(0));
-	//srand(rand());
-	float result = ((float)(rand() % limiter));
-	result += ((float)(rand() % 1000) / 1000);
-	Sleep(200);
+	
+	static unsigned int nSeed = 5323;
+	nSeed = (8253729 * nSeed + 2396403);
+	
+
+	//srand(time(0));
+	////srand(rand());
+	float result = ((float)(nSeed % limiter));
+	result += ((float)(nSeed % 1000) / 1000);
+	//Sleep(200);
 	return result;
 }
 
@@ -60,6 +70,7 @@ int getTabSize()
 
 void print_zad21(float* tab, int size, int precision)
 {
+	cout << "----------------------" << endl;
 	cout.precision(precision);
 	cout.setf(ios::fixed);
 	for (int i = 0; i<size; i++)
@@ -68,12 +79,13 @@ void print_zad21(float* tab, int size, int precision)
 		cout << tab[i] << " ";
 	}
 	cout << endl;
+	cout << "----------------------" << endl;
+	
 }
 
 
 int get_precision_zad22()
 {
-	//dorzuciæ dok³adnoœæ wyœwietlania po przecinku i pytaæ usera o to
 	bool isValid = false;
 	int precision;
 	do
@@ -88,7 +100,6 @@ int get_precision_zad22()
 		}
 	} while (!isValid);
 	return precision;
-
 }
 
 void print_in_many_formats_zad23(float *tab, int size, int precision)
@@ -148,10 +159,10 @@ float* sort_zad24(float* tab, int size)
 	return tab;
 }
 
-float* get_double_tab_zad25(float* tab, int size)
+float* get_double_tab_zad25(float* tab, int size, bool random)
 {
 	int double_size = size * 2;
-	float *tab_copy = generateTab(double_size);
+	float *tab_copy = generateTab(double_size, random);
 	return tab_copy;
 
 }
@@ -189,12 +200,13 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	///tablica dynamiczna z max wsczytanym od usera na pocz¹tku
 	//wycztywanie liczb rzeczywistych, zeby nie przekroczy³o tablicy
-	
-	/*for (int i = 0; i < 25;i++)
-		cout << getRandomNumber(1000)<<endl;*/
-	int precision = get_precision_zad22()l
-	int size = 3;//getTabSize();
-	float * tab = generateTab(size);
+	/*
+	for (int i = 0; i < 25;i++)
+		cout << get_random_number(1000) << endl;
+	system("pause");*/
+	int precision = get_precision_zad22();
+	int size = getTabSize();
+	float * tab = generateTab(size, true);
 	//zad21(precision);
 	//zad23(precision);
 	cout << "Wprowadzone liczby" << endl;
@@ -206,7 +218,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	print_zad21(tab, size, precision);
 	cout << "Podwojny rozmiar tablicy" << endl;
 	int double_size = size * 2;
-	float* tab_copy = get_double_tab_zad25(tab, size);
+	float* tab_copy = get_double_tab_zad25(tab, size, true);
 	print_zad21(tab_copy, double_size, precision);
 	cout << "Kopiowanie tablic" << endl;
 	copy_tables_zad25(tab, size, tab_copy, double_size);
