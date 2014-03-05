@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -77,23 +78,24 @@ int zad22()
 
 }
 
-void zad23(int precision)
+void print_in_many_formats_zad23(float *tab, int size, int precision)
 {
-	int size = getTabSize();
-	float *tab = generateTab(size);
-
+	cout << setw(10) << internal << "dec"; 
+	cout << setw(10) << internal << "oct";
+	cout << setw(10) << internal << "hex";
+	cout << endl;
 	for (int i = 0; i< size; i++)
 	{
 		int temp = (int)tab[i];
 		cout.precision(precision);
-		cout.setf(ios::fixed);
-		cout << tab[i] << " ";
-		cout.unsetf(ios::fixed);
+		//cout.setf(ios::fixed);
+		cout << setw(10)<< right << fixed << tab[i];
+		//cout.unsetf(ios::fixed);
 		//cout.setf(ios::oct, ios::basefield);
-		cout << oct << temp << " ";
+		cout << setw(10) << right<< oct << temp;
 		//cout.unsetf(ios::oct);
 		//cout.setf(ios::hex, ios::basefield);
-		cout << hex << temp << " ";
+		cout <<setw(10) << right << hex << temp;
 		//cout.unsetf(ios::hex);
 		cout << endl;
 	}
@@ -150,8 +152,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	//zad21(precision);
 	//zad23(precision);
 	print_zad21(tab, size, precision);
-	tab = sort_zad24(tab, size);
-	print_zad21(tab, size, precision);
+	print_in_many_formats_zad23(tab, size, precision);
+	//tab = sort_zad24(tab, size);
+	//print_zad21(tab, size, precision);
 	cleanUp(tab);
 
 	system("pause");
