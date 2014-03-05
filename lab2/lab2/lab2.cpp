@@ -4,6 +4,8 @@
 #include "stdafx.h"
 #include <iostream>
 #include <iomanip>
+#include <random>
+#include <Windows.h>
 
 using namespace std;
 
@@ -25,6 +27,16 @@ float* generateTab(int size)
 	}
 	return tab;
 
+}
+
+float get_random_number(int limiter)
+{
+	srand(time(0));
+	//srand(rand());
+	float result = ((float)(rand() % limiter));
+	result += ((float)(rand() % 1000) / 1000);
+	Sleep(200);
+	return result;
 }
 
 int getTabSize()
@@ -135,6 +147,14 @@ float* sort_zad24(float* tab, int size)
 	return tab;
 }
 
+float* get_double_tab_zad25(float* tab, int size)
+{
+	int double_size = size * 2;
+	float *tab_copy = generateTab(double_size);
+	return tab_copy;
+
+}
+
 void cleanUp(float *tab)
 {
 	delete[] tab;
@@ -145,7 +165,9 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	///tablica dynamiczna z max wsczytanym od usera na pocz¹tku
 	//wycztywanie liczb rzeczywistych, zeby nie przekroczy³o tablicy
-
+	
+	/*for (int i = 0; i < 25;i++)
+		cout << getRandomNumber(1000)<<endl;*/
 	int precision = 2;//zad22();
 	int size = 3;//getTabSize();
 	float * tab = generateTab(size);
