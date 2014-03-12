@@ -13,7 +13,7 @@ Okrag::Okrag(int x =0 , int y=0, float r=1) : x(x), y(y)
 {
 	if (r <= 0)
 	{
-		cout << "Promien nie moze byc mniejszy od zera";
+		cout << "Promien nie moze byc mniejszy od zera"<<endl;
 		return;
 	}
 	this->r = r;

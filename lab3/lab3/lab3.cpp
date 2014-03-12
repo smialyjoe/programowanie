@@ -5,6 +5,7 @@
 #include "Okrag.h"
 #include <string>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -20,51 +21,76 @@ bool SaveToFile(string filename, Okrag* tab, int size)
 	for (int i = 0; i < size; i++)
 	{
 		Okrag temp = tab[i];
-		file << temp.X() << ";" << temp.Y() << "," << temp.R() << endl;
+		file << temp.X() << ";" << temp.Y() << ";" << temp.R() << endl;
 	}
 	file.close();
 	return true;
 }
 
-Okrag* REadFromFile(string filename, Okrag* tab, int size)
+Okrag* ReadFromFile(string filename, int &size)
 {
-	tab = new Okrag[size];
+	
 	fstream file;
 	file.open(filename, ios_base::in);
 	if (!file.good())
-		return tab;
+		return NULL;
 	char source[100];
-	string sour;
+	stringstream ss;
 	file.getline(source,100);
-	int s = (int)(*source) - 48;
-	bool flag = true;
-	int i = 0;
-	while (flag)
-	{
-		char b = source[i];
-		i++;
-	}
+	ss << source;
+	ss >> size;
+	if (size <= 0)
+		return NULL;
+	Okrag *tab = new Okrag[size];
 	for (int i = 0; i < size; i++)
 	{
-		file.get(source, '#');
+		int x, y;
+		float r;
+		stringstream converter;
+		char row[100];
+		file.getline(row, 100);
+		string var;
+		ss.clear();
+		ss << row;
+		getline(ss, var, ';');
+		converter << var;
+		converter >> x;
+		converter.clear();
+		getline(ss, var, ';');
+		converter << var;
+		converter >> y;
+		converter.clear();
+		getline(ss, var, ';');
+		converter << var;
+		converter >> r;
+		converter.clear();
+		Okrag temp = Okrag(x, y, r);
+		tab[i] = temp;
 	}
+	return tab;
 }
 
 int getRandomInt(int limiter)
 {
-	static unsigned int nSeed = 5323;
+	srand(time(NULL));
+	static unsigned int nSeed = 5323 + rand()%1000;
 	nSeed = (8253729 * nSeed + 2396403);
 	float result = ((nSeed % limiter));
 	result += ((nSeed % 1000) / 1000);
 	return result;
 }
 
-float getRandomFloat(int limiter)
+float getRandomPositiveFloat(int limiter)
 {
-	static unsigned int nSeed = 5323;
-	nSeed = (8253729 * nSeed + 2396403);
-	float result = ((float)(nSeed % limiter));
-	result += ((float)(nSeed % 1000) / 1000);
+	srand(time(NULL));
+	static unsigned int nSeed = 5323 + rand()%1000;
+	float result = -1;
+	while (result <= 0)
+	{
+		nSeed = (8253729 * nSeed + 2396403);
+		result = ((float)(nSeed % limiter));
+		result += ((float)(nSeed % 1000) / 1000);
+	}
 	return result;
 }
 
@@ -113,21 +139,31 @@ int _tmain(int argc, _TCHAR* argv[])
 	cout << "Podaj rozmiar tablicy: " << endl;
 	cin >> size;
 	Okrag* tab = new Okrag[size];
-	//REadFromFile(filename, tab, size);
+	
 	for (int i = 0; i < size; i++)
 	{
 		int x = getRandomInt(100), y = getRandomInt(100);
-		float r = getRandomFloat(100);
+		float r = getRandomPositiveFloat(100);
 		Okrag kolo1 = Okrag(x, y, r);
-		kolo1.PrintKolo();
+		//kolo1.PrintKolo();
 		tab[i] = kolo1;
 	}
 	int o1 = getRandomInt(size -1);
 	int o2 = getRandomInt(size -1);
-	checkCommonPoints(tab[o1], tab[o2]);
-	//SaveToFile(filename, tab, size);
+	checkCommonPoints(tab[o1], tab[o2]); // - sprawdzanie losowo wybranych dwóch okrêgów
+	SaveToFile(filename, tab, size); // - zapisanie danych do pliku
 	delete[] tab;
 	tab = NULL;
+	int new_size;
+	Okrag *tab_from_file = ReadFromFile(filename, new_size); // - tworzymy nowe struktury dla pewnoœci, ¿e zawarotœæ jest z pliku
+	cout << "=================" << endl;
+	cout << "Zawartoœæ z wczytanego pliku" << endl;
+	for (int i = 0; i < new_size; i++)
+	{
+		tab_from_file[i].PrintKolo();
+	}
+	delete[] tab_from_file;
+	tab_from_file = NULL;
 	system("pause");
 	return 0;
 }
