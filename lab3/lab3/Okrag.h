@@ -19,6 +19,7 @@ public:
 	float GetObwod();
 	void PrintObwod();
 	void PrintPole();
+	void PrintKolo();
 	~Okrag();
 
 

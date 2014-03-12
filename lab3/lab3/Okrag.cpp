@@ -9,14 +9,14 @@ Okrag::Okrag()
 	r = 1;
 }
 
-Okrag::Okrag(int x, int y, float r) : x(x), y(y)
+Okrag::Okrag(int x =0 , int y=0, float r=1) : x(x), y(y)
 {
 	if (r <= 0)
 	{
 		cout << "Promien nie moze byc mniejszy od zera";
 		return;
 	}
-
+	this->r = r;
 }
 
 float Okrag::GetPole()
@@ -37,6 +37,12 @@ void Okrag::PrintObwod()
 void Okrag::PrintPole()
 {
 	cout << setprecision(4) << this->GetPole();
+}
+
+void Okrag::PrintKolo()
+{
+	cout << setprecision(4) << "wspolrzedne srodka: (" << x << "," << y << ")" << endl;
+	cout << setprecision(4) << "Dlugosc promienia: " << r << endl;
 }
 
 Okrag::~Okrag()
