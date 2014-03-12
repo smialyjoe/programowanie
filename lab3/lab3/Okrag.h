@@ -21,7 +21,9 @@ public:
 	void PrintPole();
 	void PrintKolo();
 	~Okrag();
-
+	int X();
+	int Y();
+	float R();
 
 };
 

@@ -31,12 +31,27 @@ float Okrag::GetObwod()
 
 void Okrag::PrintObwod()
 {
-	cout << setprecision(4) << this->GetObwod();
+	cout << "Obwod okregu: "<< setprecision(4) << this->GetObwod()<<endl;
 }
 
 void Okrag::PrintPole()
 {
-	cout << setprecision(4) << this->GetPole();
+	cout << "Pole okregu: "<< setprecision(4) << this->GetPole() << endl;	
+}
+
+int Okrag::X()
+{
+	return x;
+}
+
+int Okrag::Y()
+{
+	return y;
+}
+
+float Okrag::R()
+{
+	return r;
 }
 
 void Okrag::PrintKolo()
