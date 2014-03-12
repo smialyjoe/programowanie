@@ -1,0 +1,44 @@
+#include "stdafx.h"
+#include "Okrag.h"
+
+
+Okrag::Okrag()
+{
+	x = 0;
+	y = 0;
+	r = 1;
+}
+
+Okrag::Okrag(int x, int y, float r) : x(x), y(y)
+{
+	if (r <= 0)
+	{
+		cout << "Promien nie moze byc mniejszy od zera";
+		return;
+	}
+
+}
+
+float Okrag::GetPole()
+{
+	return (float)(M_PI * pow(r, 2));
+}
+
+float Okrag::GetObwod()
+{
+	return r* 2 * M_PI;
+}
+
+void Okrag::PrintObwod()
+{
+	cout << setprecision(4) << this->GetObwod();
+}
+
+void Okrag::PrintPole()
+{
+	cout << setprecision(4) << this->GetPole();
+}
+
+Okrag::~Okrag()
+{
+}
