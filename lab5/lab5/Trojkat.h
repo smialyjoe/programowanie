@@ -10,8 +10,7 @@ public:
 
 	virtual void printWierzochlki();
 	virtual float getPole();
-	virtual float getObwod();
-	virtual string ToString();
+//	virtual float getObwod();
 	virtual bool SaveToFile(string filename);
 	virtual bool ReadFromFile(string filename) ;
 };

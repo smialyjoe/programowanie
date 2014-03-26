@@ -14,15 +14,15 @@ Czworokat::~Czworokat()
 	delete[] wierzcholki;
 	wierzcholki = NULL;
 }
-
-float Czworokat::getObwod()
-{
-	float obwod = wierzcholki[0].getDistanceToPoint(wierzcholki[1])
-		+ wierzcholki[1].getDistanceToPoint(wierzcholki[2])
-		+ wierzcholki[2].getDistanceToPoint(wierzcholki[3])
-		+ wierzcholki[3].getDistanceToPoint(wierzcholki[0]);
-	return obwod;
-}
+//
+//float Czworokat::getObwod()
+//{
+//	float obwod = wierzcholki[0].getDistanceToPoint(wierzcholki[1])
+//		+ wierzcholki[1].getDistanceToPoint(wierzcholki[2])
+//		+ wierzcholki[2].getDistanceToPoint(wierzcholki[3])
+//		+ wierzcholki[3].getDistanceToPoint(wierzcholki[0]);
+//	return obwod;
+//}
 
 float Czworokat::getPole()
 {
@@ -32,15 +32,6 @@ float Czworokat::getPole()
 	return -1;
 }
 
-string Czworokat::ToString()
-{
-	string w = "(";
-	for (int i = 0; i < liczba_wierzcholkow; i++)
-		w.append(wierzcholki[i].ToString().append(","));
-	w = w.substr(0, w.size() - 1);
-	w.append(")");
-	return w;
-}
 
 void Czworokat::printWierzochlki()
 {

@@ -16,8 +16,8 @@ public:
 
 	virtual void printWierzochlki() = 0;
 	virtual float getPole() = 0;
-	virtual float getObwod() = 0;
-	virtual string ToString() = 0;
+	virtual float getObwod();
+	virtual string ToString();
 	virtual bool SaveToFile(string filename)= 0;
 	virtual bool ReadFromFile(string filename) =0;
 	bool setPoint(Punkt p, int indeksWierzcholka);

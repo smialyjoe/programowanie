@@ -15,13 +15,13 @@ Trojkat::~Trojkat()
 	wierzcholki = NULL;
 }
 
-float Trojkat::getObwod()
-{
-	float obwod = wierzcholki[0].getDistanceToPoint(wierzcholki[1])
-		+ wierzcholki[1].getDistanceToPoint(wierzcholki[2])
-		+ wierzcholki[2].getDistanceToPoint(wierzcholki[0]);
-	return obwod;
-}
+//float Trojkat::getObwod()
+//{
+//	float obwod = wierzcholki[0].getDistanceToPoint(wierzcholki[1])
+//		+ wierzcholki[1].getDistanceToPoint(wierzcholki[2])
+//		+ wierzcholki[2].getDistanceToPoint(wierzcholki[0]);
+//	return obwod;
+//}
 
 void Trojkat::printWierzochlki()
 {
@@ -32,10 +32,13 @@ float Trojkat::getPole()
 {
 	return -1;
 }
-string Trojkat::ToString()
-{
-	
-}
 
-bool SaveToFile(string filename);
-bool ReadFromFile(string filename);
+
+bool Trojkat::SaveToFile(string filename)
+{
+	return true;
+}
+bool Trojkat::ReadFromFile(string filename)
+{
+	return true;
+}
