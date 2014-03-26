@@ -79,15 +79,23 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Czworokat.h" />
+    <ClInclude Include="Figura.h" />
+    <ClInclude Include="Punkt.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Trojkat.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Czworokat.cpp" />
+    <ClCompile Include="Figura.cpp" />
     <ClCompile Include="lab5.cpp" />
+    <ClCompile Include="Punkt.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Trojkat.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

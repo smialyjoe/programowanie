@@ -24,12 +24,36 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Figura.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Punkt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Czworokat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Trojkat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="lab5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Figura.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Punkt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Czworokat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Trojkat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
