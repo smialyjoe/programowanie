@@ -12,7 +12,7 @@ protected:
 	Punkt *wierzcholki; //za³o¿enie: wierzoch³ki bêd¹ przechowywane zgodnie z ruchem wskazówek zegara, zaczynajac od lewego górnego wierzcho³ka
 public:
 	Figura();
-	~Figura();
+	virtual ~Figura();
 
 	virtual void printWierzochlki() = 0;
 	virtual float getPole() = 0;

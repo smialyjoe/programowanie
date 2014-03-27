@@ -9,6 +9,8 @@ Figura::Figura()
 
 Figura::~Figura()
 {
+	delete[] wierzcholki;
+	wierzcholki = NULL;
 }
 
 bool Figura::setPoint(Punkt p, int indeksWierzcholka)

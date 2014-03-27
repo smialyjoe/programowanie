@@ -9,11 +9,11 @@ Trojkat::Trojkat()
 }
 
 
-Trojkat::~Trojkat()
-{
-	delete[] wierzcholki;
-	wierzcholki = NULL;
-}
+//Trojkat::~Trojkat()
+//{
+//	delete[] wierzcholki;
+//	wierzcholki = NULL;
+//}
 
 //float Trojkat::getObwod()
 //{
@@ -30,7 +30,11 @@ void Trojkat::printWierzochlki()
 
 float Trojkat::getPole()
 {
-	return -1;
+	float podstawa = wierzcholki[0].getDistanceToPoint(wierzcholki[2]);
+	Punkt polowa_podstawy = Punkt((wierzcholki[2].X() - wierzcholki[0].X()) / 2,
+		(wierzcholki[2].Y() - wierzcholki[0].Y()) / 2);
+	float h = wierzcholki[1].getDistanceToPoint(polowa_podstawy);
+	return podstawa * h / 2;
 }
 
 

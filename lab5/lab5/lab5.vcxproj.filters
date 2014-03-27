@@ -36,6 +36,15 @@
     <ClInclude Include="Trojkat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Kwadrat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Osmiokat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Wektor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -54,6 +63,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Trojkat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Kwadrat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Osmiokat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Wektor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

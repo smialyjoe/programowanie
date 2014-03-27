@@ -31,6 +31,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	{
 		cout << figury[i]->ToString() << endl;
 		cout << "obwod: " << figury[i]->getObwod() << endl;
+		cout << "pole: " << figury[i]->getPole() << endl;
+		cout << endl;
 	}
 	
 	system("pause");
