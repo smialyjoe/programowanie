@@ -6,12 +6,32 @@
 #include "Trojkat.h"
 #include "Osmiokat.h"
 #include "Kwadrat.h"
+#include <fstream>
 
+
+bool SaveToFile(string filename);
+
+bool SaveToFile(string filename, Figura **tab, int size)
+{
+	fstream file;
+	file.open(filename, ios_base::out);
+	if (!file.good())
+		 return false;
+	file << size << endl; 
+	for (int i = 0; i < size; i++)
+		 {
+		Figura *temp = tab[i];
+		file << (*temp).ToFileString() << endl;
+		}
+	file.close();
+	return true;
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
 
 	int rozmiar = 3;
+	string filename = "plik.txt";
 	Figura **figury = new Figura*[rozmiar];
 
 	Czworokat cz1 = Czworokat();
@@ -48,7 +68,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		cout << "pole: " << figury[i]->getPole() << endl;
 		cout << endl;
 	}
-	
+	SaveToFile(filename, figury, rozmiar);
+
 	system("pause");
 
 	delete[] figury;
