@@ -4,12 +4,13 @@
 #include "stdafx.h"
 #include "Czworokat.h"
 #include "Trojkat.h"
+#include "Kwadrat.h"
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
 
-	int rozmiar = 2;
+	int rozmiar = 3;
 	Figura **figury = new Figura*[rozmiar];
 
 	Czworokat cz1 = Czworokat();
@@ -26,6 +27,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	t.setPoint(6, 0, 2);
 
 	figury[1] = &t;
+
+	Kwadrat k = Kwadrat(0, 4, 5);
+	figury[2] = &k;
 
 	for (int i = 0; i < rozmiar; i++)
 	{
