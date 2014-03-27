@@ -19,5 +19,6 @@ public:
 	float getDistanceToPoint(Punkt p);
 	string ToString();
 	~Punkt();
+	Punkt operator=(Punkt &p);
 };
 

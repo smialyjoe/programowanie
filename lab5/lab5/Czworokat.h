@@ -1,7 +1,7 @@
 #pragma once
 #include "Figura.h"
 #include <iostream>
-#include "Trojkat.h"
+#include "Wektor.h"
 
 using namespace std;
 

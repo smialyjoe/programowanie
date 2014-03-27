@@ -51,6 +51,13 @@ string Punkt::ToString()
 	return w;
 }
 
+Punkt Punkt::operator=(Punkt &p)
+{
+	this->x = p.X();
+	this->y = p.Y();
+	return *this;
+}
+
 Punkt::~Punkt()
 {
 }
