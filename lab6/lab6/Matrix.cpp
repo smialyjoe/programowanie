@@ -11,6 +11,7 @@ Matrix::Matrix(int x_size, int y_size)
 		{
 			Coords temp(i, j);
 			std::pair<Coords, float> pair(temp, 0);
+			//std::pair<Coords, float> pair = std::make_pair<Coords, float>(temp, 0.0f); //problem z hashowaniem
 			matrix.insert(pair);
 		}
 	}
