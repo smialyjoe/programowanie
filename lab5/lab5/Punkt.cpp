@@ -13,6 +13,11 @@ Punkt::Punkt()
 
 }
 
+Punkt::Punkt(string point)
+{
+	convertFromString(point);
+}
+
 float Punkt::X()
 {
 	return this->x;
@@ -56,6 +61,28 @@ Punkt Punkt::operator=(Punkt &p)
 	this->x = p.X();
 	this->y = p.Y();
 	return *this;
+}
+
+void Punkt::convertFromString(string source)
+{
+	//source = source.substr(1, source.length - 1);
+	string substring;
+	stringstream ss, source_ss;
+	source_ss << source.substr(1, source.length() - 1);
+	getline(source_ss, substring, ',');
+	ss.clear();
+	ss.str("");
+	ss << substring;
+	float temp;
+	ss >> temp;
+	this->X(temp);
+	ss.clear();
+	ss.str("");
+	substring = "";
+	getline(source_ss, substring, ',');
+	ss << substring;
+	ss >> temp;
+	this->Y(temp);
 }
 
 Punkt::~Punkt()

@@ -6,6 +6,8 @@ class Trojkat : public Figura
 public:
 	
 	Trojkat();
+	Trojkat(const Trojkat &t);
+	Trojkat(string boki);
 
 	virtual void printWierzochlki();
 	virtual float getPole();

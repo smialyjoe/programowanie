@@ -7,6 +7,8 @@ class Osmiokat : public Figura
 {
 public:
 	Osmiokat();
+	Osmiokat(string boki);
+	Osmiokat(const Osmiokat &o);
 	virtual float getPole();	
 	virtual void printWierzochlki();
 	virtual bool SaveToFile(string filename);

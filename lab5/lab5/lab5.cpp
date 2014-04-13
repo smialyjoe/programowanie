@@ -10,6 +10,7 @@
 
 
 bool SaveToFile(string filename);
+Figura** ReadFromFile(string filename, int& size);
 
 bool SaveToFile(string filename, Figura **tab, int size)
 {
@@ -25,6 +26,55 @@ bool SaveToFile(string filename, Figura **tab, int size)
 		}
 	file.close();
 	return true;
+}
+
+Figura** ReadFromFile(string filename, int& size)
+{
+	fstream file;
+	file.open(filename, ios_base::in);
+	if (!file.good())
+		return NULL;
+	stringstream ss;
+	char source[100];
+	file.getline(source, 100);
+	ss << source;
+	ss >> size;
+	if (size <= 0)
+		return NULL;
+	Figura** tab = new Figura*[size];
+	for (int i = 0; i < size; i++)
+	{
+		stringstream converter;
+		file.getline(source, 100);
+		string row;
+		ss.clear();
+		ss << source;
+		getline(ss, row, '|');
+		int boki;
+		converter.str("");
+		converter.clear();
+		converter << row;
+		converter >> boki;
+		getline(ss, row, '|');
+
+		Figura *new_figura;
+		switch (boki)
+		{
+		case 3:
+			new_figura = new Trojkat(row);
+			break;
+		case 4:
+			new_figura = new Czworokat(row);
+			break;
+		case 8:
+			new_figura = new Osmiokat(row);
+			break;
+		default:
+			break;
+		}
+		tab[i] = new_figura;
+	}
+	return tab;
 }
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -70,10 +120,24 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 	SaveToFile(filename, figury, rozmiar);
 
+	Figura **nowe;
+	nowe = ReadFromFile(filename, rozmiar);
+
+	for (int i = 0; i < rozmiar; i++)
+	{
+		cout << nowe[i]->ToString() << endl;
+		cout << "obwod: " << figury[i]->getObwod() << endl;
+		cout << "pole: " << figury[i]->getPole() << endl;
+		cout << endl;
+	}
+
 	system("pause");
 
 	delete[] figury;
 	figury = NULL;
+
+	delete[] nowe;
+	nowe = NULL;
 
 	return 0;
 }

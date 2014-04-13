@@ -8,6 +8,17 @@ Osmiokat::Osmiokat()
 	wierzcholki = new Punkt[liczba_wierzcholkow];
 }
 
+Osmiokat::Osmiokat(const Osmiokat &o)
+{
+	copyConstructorHelper(o);
+}
+
+Osmiokat::Osmiokat(string boki)
+:Osmiokat()
+{
+	convertFromString(boki, liczba_wierzcholkow);
+}
+
 
 float Osmiokat::getPole()
 {

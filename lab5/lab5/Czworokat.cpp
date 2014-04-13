@@ -8,6 +8,16 @@ Czworokat::Czworokat()
 	wierzcholki = new Punkt[liczba_wierzcholkow];
 }
 
+Czworokat::Czworokat(string boki)
+	:Czworokat()
+{
+	convertFromString(boki, liczba_wierzcholkow);
+}
+
+Czworokat::Czworokat(const Czworokat &cz)
+{
+	copyConstructorHelper(cz);
+}
 
 float Czworokat::getPole()
 {

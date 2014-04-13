@@ -19,11 +19,12 @@ public:
 	virtual float getObwod();
 	virtual string ToString();
 	string ToFileString();
+	void copyConstructorHelper(const Figura& f);
 	virtual bool ReadFromFile(string filename) =0;
 	bool setPoint(Punkt p, int indeksWierzcholka);
 	bool setPoint(float x, float y, int indeksWierzcholka);
 	friend fstream &operator<<(fstream &stream, Figura& f);
-	
+	void convertFromString(string source, int boki);
 
 };
 

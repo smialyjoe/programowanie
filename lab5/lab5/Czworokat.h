@@ -17,6 +17,8 @@ public:
 	virtual bool ReadFromFile(string filename);
 
 	Czworokat();
+	Czworokat(string boki);
+	Czworokat(const Czworokat &cz);
 	//~Czworokat();
 };
 

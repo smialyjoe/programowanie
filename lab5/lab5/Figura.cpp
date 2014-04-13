@@ -50,15 +50,15 @@ float Figura::getObwod()
 
 string Figura::ToFileString()
 {
-	string w = "{";
+	string w = "";
 	stringstream ss;
 	ss << liczba_wierzcholkow;
 	w.append(ss.str());
-	w.append("|[");
+	w.append("|");
 	for (int i = 0; i < liczba_wierzcholkow; i++)
 		w.append(wierzcholki[i].ToString().append(";"));
 	w = w.substr(0, w.size() - 1);
-	w.append("]}");
+	w.append("");
 	return w;
 }
 
@@ -77,3 +77,25 @@ fstream &operator<<(fstream &stream, Figura& f)
 	return stream;
 }
 
+void Figura::convertFromString(string source, int boki)
+{
+	stringstream ss;
+	ss << source;
+	for (int i = 0; i < boki; i++)
+	{
+		string point;
+		getline(ss, point, ';');
+		Punkt p = Punkt(point);
+		this->wierzcholki[i] = p;
+	}
+}
+
+void Figura::copyConstructorHelper(const Figura& f)
+{
+	this->liczba_wierzcholkow = f.liczba_wierzcholkow;
+	this->wierzcholki = new Punkt[liczba_wierzcholkow];
+	for (int i = 0; i < liczba_wierzcholkow; i++)
+	{
+		this->wierzcholki[i] = Punkt(f.wierzcholki[i].X(), f.wierzcholki[i].Y());
+	}
+}

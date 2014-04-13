@@ -8,6 +8,17 @@ Trojkat::Trojkat()
 	wierzcholki = new Punkt[liczba_wierzcholkow];
 }
 
+Trojkat::Trojkat(string boki)
+	:Trojkat()
+{
+	convertFromString(boki, liczba_wierzcholkow);
+}
+
+Trojkat::Trojkat(const Trojkat &t)
+{
+	copyConstructorHelper(t);
+}
+
 void Trojkat::printWierzochlki()
 {
 	cout << this->ToString();
