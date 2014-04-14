@@ -12,6 +12,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	max_x = max_y = 10;
 	Matrix m = Matrix(max_x, max_y);
 	cout << m << endl;
+	system("pause");
 	return 0;
 }
-

@@ -14,6 +14,8 @@ Coords::Coords(Coords &c)
 	this->y = c.Y();
 }
 
+
+
 Coords::Coords(int x, int y)
 {
 	/*if (x >= 0 && y >= 0)
@@ -32,9 +34,19 @@ int Coords::X()
 	return this->x;
 }
 
+int Coords::X() const
+{
+	return x;
+}
+
 int Coords::Y()
 {
 	return this->y;
+}
+
+int Coords::Y() const
+{
+	return y;
 }
 
 void Coords::X(int x)
@@ -46,20 +58,22 @@ void Coords::X(int x)
 
 void Coords::Y(int y)
 {
-	if (this->y >= 0)
+	if (y >= 0)
 	{
 		this->y = y;
 	}
 }
 
-bool Coords::operator==(Coords &c)
+bool Coords::operator==(const Coords &c) const
 {
-	int x = c.X();
-	int y = c.Y();
-	if (this->X() == c.X() && this->Y() == c.Y())
+	//int x = c.X();
+	//int y = c.Y();
+	if (x == c.x && y == c.y)
 		return true;
 	return false;
 }
+
+
 
 Coords::~Coords()
 {

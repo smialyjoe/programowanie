@@ -12,7 +12,9 @@ public:
 	void X(int x); //refactor do operatorów przypisania
 	void Y(int y);
 	int X();
+	int X() const;
 	int Y();
-	bool operator==(Coords &c);
+	int Y() const;
+	bool operator==(const Coords &c) const;
 };
 
